@@ -1,0 +1,1 @@
+A simple weather application that allows users to view current weather information for any location worldwide. It fetches data from a reliable weather API and displays real-time weather conditions, forecasts, and other related details.
