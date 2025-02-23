@@ -15,10 +15,11 @@ getData()
 
 
 
+
 async function getData() {
-  
+  console.log(input.value)
     let url = ``
-    if(input.value === ''){
+    if(input.value === '' || input.value === undefined ){
          url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=London`
         
 
@@ -26,6 +27,7 @@ async function getData() {
          url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${input.value}`
         
     }
+  
 
     
     try {
@@ -45,6 +47,10 @@ async function getData() {
       document.querySelector('h2').innerHTML = `Temperatue is ${currentTemp} °F`
       document.querySelector('h3').innerHTML = `Feels like ${feelsLike} °F`
       document.querySelector('h4').innerHTML = imgHeader
+      document.querySelector('h5').innerHTML = data.location.name
+      document.querySelector('h6').innerHTML = data.location.country
+      input.placeholder = data.location.name
+      input.value = ''
       
     } catch (error) {
       console.error(error.message);

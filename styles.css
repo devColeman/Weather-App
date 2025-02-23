@@ -1,9 +1,34 @@
 body {
-    background-color: bisque;
+    background-color: #0A192F;
+    color: #64FFDA;
     
 }
 
-h1, div {
+h1 {
     display: flex;
     justify-content: center;
+}
+
+#search-div {
+    display: flex;
+    justify-content: center;
+    
+}
+
+#main {
+display: flex;
+justify-content: space-around;
+padding-top: 30px
+}
+
+#left-panel {
+    border: 1px solid black;
+    height: 300px;
+    width: 300px;
+}
+
+#right-panel { 
+    border: 1px solid black;
+    height: 300px;
+    width: 300px;
 }
