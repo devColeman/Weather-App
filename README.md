@@ -10,7 +10,7 @@ A simple weather application that allows users to view current weather informati
 - User-friendly interface
 
 ## Technologies Used
-- **Frontend**: HTML, CSS, JavaScript (React.js or Vue.js)
+- **Frontend**: HTML, CSS, JavaScript 
 - **Weather API**: OpenWeatherMap API (or other weather services)
 - **Version Control**: Git & GitHub
 
