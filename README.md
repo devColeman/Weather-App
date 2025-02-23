@@ -14,8 +14,5 @@ A simple weather application that allows users to view current weather informati
 - **Weather API**: OpenWeatherMap API (or other weather services)
 - **Version Control**: Git & GitHub
 
-## Installation
 
-### Prerequisites
-- A code editor like VSCode
-- Weather API key from [OpenWeatherMap](https://openweathermap.org/) or your chosen provider
+
