@@ -8,7 +8,6 @@ const image = document.getElementById('myImage');
 
 
 // todos:
-// MAKE A HELPER FUNTION NEXT TIME WE CODE
 // change placeholder on search to include both place and country
 // add city names, temperature hunidity wind speed and add weather icons
 // watch the yt videon and look up some weather apps to use ideas from
@@ -20,7 +19,6 @@ getData()
 
 
 async function getData() {
-  console.log(input.value)
     let url = ``
     let url2 = ``
     if(input.value === '' || input.value === undefined ){
@@ -39,51 +37,19 @@ async function getData() {
       }
       
       const data2 = await response.json();
-
-      // filters out the 0 from times ex: 06:24 am => 6:24 am
-      let f = data2.astronomy.astro.sunrise
-      if(Number(f[0]) === 0){
-      f = f.split('')
-      f.shift()
-       f =  f.join('')
-         } else {
-        f = f.split('')
-       f = f.join('')
-        
-      }
-     
       console.log(data2)
-      
-       document.querySelector('.sunrise').innerHTML = ` ${f}`
 
-       // sunset same as above i should really make a function for this
-       let z = data2.astronomy.astro.sunset
-      if(Number(z[0]) === 0){
-      z = z.split('')
-      z.shift()
-       z =  z.join('')
-         } else {
-        z = z.split('')
-       z = z.join('')
-        
-      }
-       document.querySelector('.sunset').innerHTML = `${z}`
+      // filters out the 0 from times ex: 06:24 am => 6:24 am using function removeZero
+      let f = data2.astronomy.astro.sunrise.split('')
+       document.querySelector('.sunrise').innerHTML = ` ${removeZero(f)}`
 
-       // really need a funtion, added to todos
+      let z = data2.astronomy.astro.sunset.split('')
+      document.querySelector('.sunset').innerHTML = `${removeZero(z)}`
 
-       let k = data2.astronomy.astro.moonrise
-       if(Number(k[0]) === 0){
-        k = k.split('')
-        k.shift()
-         k =  k.join('')
-           } else {
-          k = k.split('')
-         k = k.join('')
-          
-        }
-         document.querySelector('.moonrise').innerHTML = ` ${k}`
+      let k = data2.astronomy.astro.moonrise.split('')
+      document.querySelector('.moonrise').innerHTML = ` ${removeZero(k)}`
 
-         // 
+    
       
     } catch (error) {
       console.error(error.message);
@@ -139,4 +105,16 @@ async function getData() {
 
 
 
+  function removeZero (str) {
+    if(Number(str[0]) === 0){
+      
+      str.shift()
+       str =  str.join('')
+         } else {
+        str = str.split('')
+       str.join('')
+        
+      }
 
+      return str
+  }
