@@ -12,6 +12,7 @@ const image = document.getElementById('myImage');
 // watch the yt videon and look up some weather apps to use ideas from
 // add pop out for 3 or 5 day forecast
 // make the climate condition its own box with a box below that has the 5 day weather forecast
+// add a auto complete function(probaby last main feature beside a recent searchs)
 
 getData()
 
@@ -21,20 +22,56 @@ getData()
 async function getData() {
     let url = ``
     let url2 = ``
+    let url3 = ``
+
+    
+    
     if(input.value === '' || input.value === undefined ){
          url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=London`
         url2 = `http://api.weatherapi.com/v1/astronomy.json?key=${apiKey}&q=London&dt=2025-02-24`
+        url3 = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=portland&days=5&aqi=yes&alerts=no
+`
+        
 
     } else {
          url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${input.value}`
         url2 = `http://api.weatherapi.com/v1/astronomy.json?key=${apiKey}&q=${input.value}&dt=2025-02-24`
+        url3 = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${input.value}&days=5&aqi=yes&alerts=no`
     }
+
+    try {
+      
+      const response = await fetch(url3);
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+        
+      } 
+      const data3 = await response.json();
+      document.querySelector('.first-forecast').innerHTML = data3.forecast.forecastday[1].day.condition.text
+      document.querySelector('.first-img').src = data3.forecast.forecastday[1].day.condition.icon
+
+      document.querySelector('.second-forecast').innerHTML = data3.forecast.forecastday[2].day.condition.text
+      document.querySelector('.second-img').src = data3.forecast.forecastday[2].day.condition.icon
+
+      document.querySelector('.third-forecast').innerHTML = data3.forecast.forecastday[3].day.condition.text
+      document.querySelector('.third-img').src = data3.forecast.forecastday[3].day.condition.icon
+
+      document.querySelector('.fourth-forecast').innerHTML = data3.forecast.forecastday[4].day.condition.text
+      document.querySelector('.fourth-img').src = data3.forecast.forecastday[4].day.condition.icon
+
+      console.log(data3)
+      
+      } catch (error) {
+        console.error(error.message);
+        
+        
+      }
 
     try {
       const response = await fetch(url2);
       if (!response.ok) {
         throw new Error(`Response status: ${response.status}`);
-      }
+      } 
       
       const data2 = await response.json();
       
@@ -149,3 +186,5 @@ async function getData() {
 
       return str
   }
+
+
