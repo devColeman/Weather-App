@@ -7,10 +7,12 @@ let input = document.getElementById('search')
 const image = document.getElementById('myImage');
 
 
-// todo:
+// todos:
 // MAKE A HELPER FUNTION NEXT TIME WE CODE
+// change placeholder on search to include both place and country
 // add city names, temperature hunidity wind speed and add weather icons
 // watch the yt videon and look up some weather apps to use ideas from
+// add pop out for 3 or 5 day forecast
 
 getData()
 
