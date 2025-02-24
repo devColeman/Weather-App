@@ -39,7 +39,24 @@ padding-top: 30px
     font-size: 15px;
 }
 
-.ul-list {
+
+
+
+ ul {
+    display: block;
+    list-style: none;
+    height: 120px;
+ }
+
+ h4 {
     display: flex;
-    justify-content: space-evenly;
-}
+    justify-content: center;
+ }
+
+ .forecastDiv {
+    display: flex;
+    justify-content: center;
+    font-size: 10px;
+ }
+
+ 
