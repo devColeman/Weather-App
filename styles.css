@@ -49,9 +49,9 @@ body {
     
 }
 
-h1 {
+.top-nav{
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
     border: 1px solid black
 }
 

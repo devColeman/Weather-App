@@ -8,11 +8,13 @@ const image = document.getElementById('myImage');
 
 
 // todos:
+// last feature shoud be recent search via local storage everything else is feature complete besides add addvs to us state ex: Oregon => OR
+// then we can move to styles and ui
+
 // add city names, temperature hunidity wind speed and add weather icons
 // watch the yt videon and look up some weather apps to use ideas from
 // add pop out for 3 or 5 day forecast
 // make the climate condition its own box with a box below that has the 5 day weather forecast
-// add a auto complete function(probaby last main feature beside a recent searchs)
 
 getData()
 
@@ -49,15 +51,19 @@ async function getData() {
       const data3 = await response.json();
       document.querySelector('.first-forecast').innerHTML = data3.forecast.forecastday[1].day.condition.text
       document.querySelector('.first-img').src = data3.forecast.forecastday[1].day.condition.icon
-
+      document.querySelector('.first-max-min').innerHTML = `${Math.round(data3.forecast.forecastday[1].day.maxtemp_f)}°/${Math.round(data3.forecast.forecastday[1].day.mintemp_f)}`
+      
       document.querySelector('.second-forecast').innerHTML = data3.forecast.forecastday[2].day.condition.text
       document.querySelector('.second-img').src = data3.forecast.forecastday[2].day.condition.icon
-
+      document.querySelector('.second-max-min').innerHTML = `${Math.round(data3.forecast.forecastday[2].day.maxtemp_f)}°/${Math.round(data3.forecast.forecastday[2].day.mintemp_f)}`
+      
       document.querySelector('.third-forecast').innerHTML = data3.forecast.forecastday[3].day.condition.text
       document.querySelector('.third-img').src = data3.forecast.forecastday[3].day.condition.icon
+      document.querySelector('.third-max-min').innerHTML = `${Math.round(data3.forecast.forecastday[3].day.maxtemp_f)}°/${Math.round(data3.forecast.forecastday[3].day.mintemp_f)}`
 
       document.querySelector('.fourth-forecast').innerHTML = data3.forecast.forecastday[4].day.condition.text
       document.querySelector('.fourth-img').src = data3.forecast.forecastday[4].day.condition.icon
+      document.querySelector('.fourth-max-min').innerHTML = `${Math.round(data3.forecast.forecastday[4].day.maxtemp_f)}°/${Math.round(data3.forecast.forecastday[4].day.mintemp_f)}`
 
       console.log(data3)
       
