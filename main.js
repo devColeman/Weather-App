@@ -15,8 +15,34 @@ const image = document.getElementById('myImage');
 // watch the yt videon and look up some weather apps to use ideas from
 // add pop out for 3 or 5 day forecast
 // make the climate condition its own box with a box below that has the 5 day weather forecast
+// let dfa = localStorage.getItem('key')
+// console.log(dfa)
+let test = []
+
+ 
+
+const storedArrayString = localStorage.getItem('key')
+
+if (storedArrayString) {
+  const storedArray = JSON.parse(storedArrayString);
+  test = storedArray
+} else {
+  
+  console.log("Array not found in local storage.");
+}
+;
+
+console.log(test)
+ 
+
+
+
+
+
+
 
 getData()
+
 
 
 
@@ -26,11 +52,15 @@ async function getData() {
     let url2 = ``
     let url3 = ``
 
+ 
+
+    
+
     
     
     if(input.value === '' || input.value === undefined ){
-         url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=London`
-        url2 = `http://api.weatherapi.com/v1/astronomy.json?key=${apiKey}&q=London&dt=2025-02-24`
+         url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=portland`
+        url2 = `http://api.weatherapi.com/v1/astronomy.json?key=${apiKey}&q=portland&dt=2025-02-24`
         url3 = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=portland&days=5&aqi=yes&alerts=no
 `
         
@@ -47,7 +77,49 @@ async function getData() {
       if (!response.ok) {
         throw new Error(`Response status: ${response.status}`);
         
-      } 
+      }
+      let inputRaw = input.value
+      console.log(test.length)
+      // this check if the input is empty the else at the end is for reset on first page load
+      // i believe this i hope
+      if(test.length > 2){
+        test.shift()
+        localStorage.setItem('key', JSON.stringify(test))
+      }
+
+        
+
+      
+      if(inputRaw.trim() !== ''){
+          console.log(inputRaw)
+          test.push(inputRaw)
+          localStorage.setItem('key', JSON.stringify(test))
+          }else if(test.length >= 1){
+            console.log('does this thing work')
+          } else{
+          
+          test.push('portland')
+          localStorage.setItem('key', JSON.stringify(test))
+        }
+
+    
+     
+    // where we left off:
+    // we are able to add to local storage on refresh and the old array stays(finally works)
+    // we need to work on add the anchor tags the code we had before was creating a error
+    // maybe we could grab each element with a helper function and anytime we push we run the function?
+
+  console.log(test)
+
+      
+     
+
+ 
+      
+      
+       
+
+
       const data3 = await response.json();
       document.querySelector('.first-forecast').innerHTML = data3.forecast.forecastday[1].day.condition.text
       document.querySelector('.first-img').src = data3.forecast.forecastday[1].day.condition.icon
@@ -65,7 +137,7 @@ async function getData() {
       document.querySelector('.fourth-img').src = data3.forecast.forecastday[4].day.condition.icon
       document.querySelector('.fourth-max-min').innerHTML = `${Math.round(data3.forecast.forecastday[4].day.maxtemp_f)}°/${Math.round(data3.forecast.forecastday[4].day.mintemp_f)}`
 
-      console.log(data3)
+     
       
       } catch (error) {
         console.error(error.message);
@@ -166,6 +238,9 @@ async function getData() {
       }
       
         document.querySelector('.humidity').innerHTML = `Humidity: ${data.current.humidity}%`
+
+      
+     
      
       input.placeholder = `${data.location.name}, ${locationcountry}`
       input.value = ''
