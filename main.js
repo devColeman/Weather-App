@@ -82,7 +82,7 @@ async function getData() {
       console.log(test.length)
       // this check if the input is empty the else at the end is for reset on first page load
       // i believe this i hope
-      if(test.length > 2){
+      if(test.length > 3 ){
         test.shift()
         localStorage.setItem('key', JSON.stringify(test))
       }
@@ -101,15 +101,25 @@ async function getData() {
           test.push('portland')
           localStorage.setItem('key', JSON.stringify(test))
         }
+        console.log(test.length)
+        if(test.length === 1){
+          document.querySelector('.a0').innerHTML = test[0]
+        }else if(test.length == 2){
+          document.querySelector('.a0').innerHTML = test[0]
+          document.querySelector('.a1').innerHTML = test[1]
+        }else if(test.length === 3){
+          document.querySelector('.a0').innerHTML = test[0]
+          document.querySelector('.a1').innerHTML = test[1]
+          document.querySelector('.a2').innerHTML = test[2]
+        }
+        
+    // ok the recent search that are valid will update the recent searchs 
+    // we now need to add a event listerner to the a tags that create a new fetch
+    // im thinking about adding a parameter to the fetch then checking if there is one then
+    // use the given value maybe??
 
-    
-     
-    // where we left off:
-    // we are able to add to local storage on refresh and the old array stays(finally works)
-    // we need to work on add the anchor tags the code we had before was creating a error
-    // maybe we could grab each element with a helper function and anytime we push we run the function?
 
-  console.log(test)
+  
 
       
      
