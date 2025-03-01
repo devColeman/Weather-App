@@ -8,15 +8,11 @@ const image = document.getElementById('myImage');
 
 
 // todos:
-// last feature shoud be recent search via local storage everything else is feature complete besides add addvs to us state ex: Oregon => OR
+// we need some sort of feature when the request doesnt work
+// also need to add the dark mode should be very easy
+// then we should be feature complete
 // then we can move to styles and ui
 
-// add city names, temperature hunidity wind speed and add weather icons
-// watch the yt videon and look up some weather apps to use ideas from
-// add pop out for 3 or 5 day forecast
-// make the climate condition its own box with a box below that has the 5 day weather forecast
-// let dfa = localStorage.getItem('key')
-// console.log(dfa)
 let test = []
 
  
@@ -33,17 +29,155 @@ if (storedArrayString) {
 ;
 
 
- 
-
-
-
-
-
-
 
 getData()
 
 
+function recentSearch(zb){
+        
+        getRecent(zb)
+        }
+
+
+async function getRecent(zb) {
+  try {
+      let url = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${test[zb]}&days=5&aqi=yes&alerts=no`
+      
+
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+      
+    }
+    const data4 = await response.json()
+    
+    document.querySelector('.first-forecast').innerHTML = data4.forecast.forecastday[1].day.condition.text
+    document.querySelector('.first-img').src = data4.forecast.forecastday[1].day.condition.icon
+    document.querySelector('.first-max-min').innerHTML = `${Math.round(data4.forecast.forecastday[1].day.maxtemp_f)}°/${Math.round(data4.forecast.forecastday[1].day.mintemp_f)}`
+    
+    document.querySelector('.second-forecast').innerHTML = data4.forecast.forecastday[2].day.condition.text
+    document.querySelector('.second-img').src = data4.forecast.forecastday[2].day.condition.icon
+    document.querySelector('.second-max-min').innerHTML = `${Math.round(data4.forecast.forecastday[2].day.maxtemp_f)}°/${Math.round(data4.forecast.forecastday[2].day.mintemp_f)}`
+    
+    document.querySelector('.third-forecast').innerHTML = data4.forecast.forecastday[3].day.condition.text
+    document.querySelector('.third-img').src = data4.forecast.forecastday[3].day.condition.icon
+    document.querySelector('.third-max-min').innerHTML = `${Math.round(data4.forecast.forecastday[3].day.maxtemp_f)}°/${Math.round(data4.forecast.forecastday[3].day.mintemp_f)}`
+
+    document.querySelector('.fourth-forecast').innerHTML = data4.forecast.forecastday[4].day.condition.text
+    document.querySelector('.fourth-img').src = data4.forecast.forecastday[4].day.condition.icon
+    document.querySelector('.fourth-max-min').innerHTML = `${Math.round(data4.forecast.forecastday[4].day.maxtemp_f)}°/${Math.round(data4.forecast.forecastday[4].day.mintemp_f)}`
+
+    
+  
+  }catch (error) {
+      console.error(error.message);
+      
+      
+    }
+    try {
+      let url2 = `http://api.weatherapi.com/v1/astronomy.json?key=${apiKey}&q=${test[zb]}&dt=2025-02-24`
+    
+    const response = await fetch(url2);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+      
+    }
+    const data5 = await response.json()
+
+  // filters out the 0 from times ex: 06:24 am => 6:24 am using function removeZero
+  let f = data5.astronomy.astro.sunrise.split('')
+  document.querySelector('.sunrise').innerHTML = ` ${removeZero(f)} `
+
+ let z = data5.astronomy.astro.sunset.split('')
+ document.querySelector('.sunset').innerHTML = `${removeZero(z)}`
+
+ let k = data5.astronomy.astro.moonrise.split('')
+ document.querySelector('.moonrise').innerHTML = ` ${removeZero(k)}`
+
+//  adding the moon pic
+ let moonStuff = data5.astronomy.astro.moon_phase
+ let moonPhase = moonStuff.toLowerCase()
+
+  
+ if(moonPhase == 'new moon'){
+   document.querySelector('.moonPhase').innerHTML = `${data5.astronomy.astro.moon_phase} 🌑`
+ } else if (moonPhase == 'waxing cresent'){
+   document.querySelector('.moonPhase').innerHTML = `${data5.astronomy.astro.moon_phase} 🌒`
+ } else if (moonPhase == 'first quarter'){
+   document.querySelector('.moonPhase').innerHTML = `${data5.astronomy.astro.moon_phase} 🌓`
+ } else if (moonPhase == 'waxing gibbous'){
+   document.querySelector('.moonPhase').innerHTML = `${data5.astronomy.astro.moon_phase} 🌔`
+ } else if (moonPhase == 'full moon'){
+   document.querySelector('.moonPhase').innerHTML = `${data5.astronomy.astro.moon_phase} 🌔`
+ } else if (moonPhase == 'waning gibbous'){
+   document.querySelector('.moonPhase').innerHTML = `${data5.astronomy.astro.moon_phase} 🌖`
+ } else if (moonPhase == 'last quarter'){
+   document.querySelector('.moonPhase').innerHTML = `${data5.astronomy.astro.moon_phase} 🌗`
+ } else if (moonPhase == 'waning crescent'){
+   document.querySelector('.moonPhase').innerHTML = `${data5.astronomy.astro.moon_phase} 🌘`
+ } 
+  
+  }
+    catch (error) {
+      console.error(error.message);
+      
+      
+    }
+    try { 
+      let url3 = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${test[zb]}&days=5&aqi=yes&alerts=no`
+      const response = await fetch(url3);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+      
+    }
+    const data6 = await response.json()
+    let currentTemp = Math.round(data6.current.temp_f)
+    let feelsLike = Math.round(data6.current.feelslike_f)
+    let imgHeader = data6.current.condition.text
+    let img = data6.current.condition.icon
+
+    image.src = img;
+    document.querySelector('.dewPoint').innerHTML = `${data6.current.dewpoint_f} °F`
+    document.querySelector('.gustMph').innerHTML = ` ${data6.current.gust_mph
+    } mph`
+   
+    document.querySelector('.currentTemp').innerHTML = `${currentTemp}°F / Feels like ${feelsLike}°F`
+    document.querySelector('.imgHeader').innerHTML = imgHeader
+    document.querySelector('.location').innerHTML = data6.location.name
+    let locationcountry = ''
+    
+    if( data6.location.name === data6.location.region){
+      document.querySelector('.location').innerHTML = `${data6.location.name} / ${data6.location.country} `
+      locationcountry = data.location.country
+    } else if(data6.location.country === "United States of America") {
+      document.querySelector('.location').innerHTML = `${data6.location.name} / ${data6.location.region
+      } `
+      locationcountry = data6.location.region
+    } else {
+      document.querySelector('.location').innerHTML = `${data6.location.name} / ${data6.location.country
+      } `
+      locationcountry = data6.location.country
+    }
+    
+      document.querySelector('.humidity').innerHTML = `Humidity: ${data6.current.humidity}%`
+
+    
+   
+   
+    input.placeholder = `${data6.location.name}, ${locationcountry}`
+    input.value = ''
+
+    
+    }
+    catch (error) {
+      console.error(error.message);
+      
+      
+    }
+
+
+
+}
 
 
 
@@ -83,15 +217,18 @@ async function getData() {
 
 
           
-      // document.querySelector('.a0').addEventListener('click', testdsada)
-      // document.querySelector('.a1').addEventListener('click', testdsada)
-      // document.querySelector('.a2').addEventListener('click', testdsada)
+       document.querySelector('.a0').addEventListener('click', function(){
+        recentSearch(0)
+       })
+       document.querySelector('.a1').addEventListener('click', function(){
+        recentSearch(1)
+       })
+       document.querySelector('.a2').addEventListener('click', function(){
+        recentSearch(2)
+       })
+     
 
-      // function testdsada(){
-      //   console.log('hey this things works')
-      //   input.value = test[0]
-        
-      // }
+      
 
 
 
