@@ -148,7 +148,7 @@ async function getRecent(zb) {
     
     if( data6.location.name === data6.location.region){
       document.querySelector('.location').innerHTML = `${data6.location.name} / ${data6.location.country} `
-      locationcountry = data.location.country
+      locationcountry = data6.location.country
     } else if(data6.location.country === "United States of America") {
       document.querySelector('.location').innerHTML = `${data6.location.name} / ${data6.location.region
       } `
@@ -165,7 +165,7 @@ async function getRecent(zb) {
    
    
     input.placeholder = `${data6.location.name}, ${locationcountry}`
-    input.value = ''
+    
 
     
     }
