@@ -32,7 +32,7 @@ if (storedArrayString) {
 }
 ;
 
-console.log(test)
+
  
 
 
@@ -51,8 +51,6 @@ async function getData() {
     let url = ``
     let url2 = ``
     let url3 = ``
-
- 
 
     
 
@@ -78,30 +76,45 @@ async function getData() {
         throw new Error(`Response status: ${response.status}`);
         
       }
-      let inputRaw = input.value
-      console.log(test.length)
-      // this check if the input is empty the else at the end is for reset on first page load
-      // i believe this i hope
-      if(test.length > 3 ){
+      if(test.length > 2 ){
         test.shift()
         localStorage.setItem('key', JSON.stringify(test))
       }
+
+
+          
+      // document.querySelector('.a0').addEventListener('click', testdsada)
+      // document.querySelector('.a1').addEventListener('click', testdsada)
+      // document.querySelector('.a2').addEventListener('click', testdsada)
+
+      // function testdsada(){
+      //   console.log('hey this things works')
+      //   input.value = test[0]
+        
+      // }
+
+
+
+      let inputRaw = input.value
+      
+      // this check if the input is empty the else at the end is for reset on first page load
+      // i believe this i hope
+      
 
         
 
       
       if(inputRaw.trim() !== ''){
-          console.log(inputRaw)
           test.push(inputRaw)
           localStorage.setItem('key', JSON.stringify(test))
           }else if(test.length >= 1){
-            console.log('does this thing work')
+            
           } else{
-          
           test.push('portland')
           localStorage.setItem('key', JSON.stringify(test))
+        
         }
-        console.log(test.length)
+       
         if(test.length === 1){
           document.querySelector('.a0').innerHTML = test[0]
         }else if(test.length == 2){
@@ -113,6 +126,7 @@ async function getData() {
           document.querySelector('.a2').innerHTML = test[2]
         }
         
+       
     // ok the recent search that are valid will update the recent searchs 
     // we now need to add a event listerner to the a tags that create a new fetch
     // im thinking about adding a parameter to the fetch then checking if there is one then
