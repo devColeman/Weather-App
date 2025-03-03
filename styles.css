@@ -1,3 +1,7 @@
+:root{
+    --hover-color: #E3F2FD;
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -25,6 +29,12 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+    
+}
+
+a{
+    text-decoration: none;
+    
 }
 ol, ul {
 	list-style: none;
@@ -43,29 +53,114 @@ table {
 }
 
 body {
-    background-color: white;
-    color: black;
+    background-color: #F8F9FA;
+    color: #333333;
     
-    /* #64FFDA, #0A192F */
+   
 }
 
 .top-nav{
     display: flex;
-    justify-content: space-between;
-    border: 1px solid black
+   
+    min-width: 200px;
+    min-height: 50px;
+    flex-wrap: wrap
+}
+
+h1{
+    flex: 1.75;
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 34px;
+}
+
+.darkBox a{
+    display: flex;
+    align-items: center;
+    transition: all .5s ease;
+    border-radius: 2rem;
+    padding: 10px;
+    
+}
+
+.darkBox a:hover {
+    background-color: var(--hover-color);
+    border-radius: 2rem;
+    padding: 10px;
+   
+    
 }
 
 #search-div {
     display: flex;
-    justify-content: space-around;
+   justify-content: space-evenly;
+  
+   min-width: 200px;
+   min-height: 30px;
     
 }
 
 .recent-searchs {
-    display: flex;
-    flex-direction: column;
-    justify-content: right;
+   display: flex;
+   justify-content: center;
+   padding-top: 20px;
+   min-width: 200px;
+   min-height: 20px;
+   align-items: center;
+    
 }
+
+input{
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    outline: none;
+    border-bottom-left-radius: 2rem;
+    border-top-left-radius: 2rem;
+    border: none;
+    padding-left: 7px;
+    
+}
+input:focus {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2)
+}
+button {
+    background-color: white;
+    border: none;
+    border-bottom-right-radius: 2rem;
+    border-top-right-radius: 2rem;
+    
+    transition: all .5s ease;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #E3F2FD;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2)
+}
+
+
+
+.input-stuff { 
+    display: flex;
+    flex: 1.3;
+    justify-content: center;
+}
+
+.recent-a a {
+    color: #64ffda;
+    padding: 8px;
+    
+    border-radius: 2rem;
+}
+
+.recent-a a:hover {
+    background-color: var(--hover-color);
+    border-radius: 2rem;
+    transition: all .7s ease;
+  }
 
 
 #main {

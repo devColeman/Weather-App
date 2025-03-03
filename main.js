@@ -5,24 +5,44 @@ import {
 document.querySelector('button').addEventListener('click', getData)
 document.querySelector('.dark').addEventListener('click', dark)
 let input = document.getElementById('search')
+let btn = document.getElementById('searchBtn')
+let a0 = document.querySelector('.a0')
+let a1 = document.querySelector('.a1')
+// let a0 = document.querySelector('.a0')
 const image = document.getElementById('myImage');
-
+const lightBackground = '#F8F9FA'
+const lightFont = '#212121'
+const lightHover = '#E3F2FD'
+const darkBackground = '#1A1A1A'
+const darkFont = '#E0E0E0'
+const darkHover = '#1E3A8A'
 
 // todos:
-// also need to add the dark mode should be very easy
-// maybe just black and white to make it easy to add now
-// then we should be feature complete
+// 🎉 feature complete🎉
 // then we can move to styles and ui watch the websites playlist
 
 let test = []
 let color = localStorage.getItem("color");
-if(color){
+
+if(color ==='light'){
   localStorage.setItem('color', color)
-   document.body.style.backgroundColor = "#0A192F"
-    document.body.style.color = '#64FFDA'
+  document.body.style.backgroundColor = lightBackground;
+    document.body.style.color = lightFont;
+    input.style.outline = "1px solid black"; 
+    btn.style.outline = "1px solid black"; 
+    a0.style.color = lightFont
+    a1.style.color = lightFont
+    document.documentElement.style.setProperty("--hover-color", lightHover);
+    
 }else {
-  localStorage.setItem('color', 'light')
+  localStorage.setItem('color', 'black')
+  document.body.style.backgroundColor = darkBackground
+    document.body.style.color = darkFont
+    a0.style.color = darkFont
+    a1.style.color = darkFont
+    document.documentElement.style.setProperty("--hover-color", darkHover);
 }
+
 
 
 
@@ -32,14 +52,21 @@ function dark(){
     
     localStorage.setItem('color', 'black')
     color = localStorage.getItem("color")
-    document.body.style.backgroundColor = "#0A192F"
-    document.body.style.color =  '#64FFDA'
+    document.body.style.backgroundColor = darkBackground
+    document.body.style.color =  darkFont
+    a0.style.color = darkFont
+    a1.style.color = darkFont
+    document.documentElement.style.setProperty("--hover-color", darkHover);
    }else{
    
     localStorage.setItem('color', 'light')
     color = localStorage.getItem("color")
-    document.body.style.backgroundColor = 'white'
-    document.body.style.color = 'black'
+    document.body.style.backgroundColor = lightBackground
+    document.body.style.color = lightFont
+    a0.style.color = lightFont
+    a1.style.color = lightFont
+    document.documentElement.style.setProperty("--hover-color", lightHover);
+    
    }
   
 }
