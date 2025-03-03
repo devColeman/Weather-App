@@ -3,17 +3,46 @@ import {
 } from "./api-keys.js"
 
 document.querySelector('button').addEventListener('click', getData)
+document.querySelector('.dark').addEventListener('click', dark)
 let input = document.getElementById('search')
 const image = document.getElementById('myImage');
 
 
 // todos:
-// we need some sort of feature when the request doesnt work
 // also need to add the dark mode should be very easy
+// maybe just black and white to make it easy to add now
 // then we should be feature complete
-// then we can move to styles and ui
+// then we can move to styles and ui watch the websites playlist
 
 let test = []
+let color = localStorage.getItem("color");
+if(color){
+  localStorage.setItem('color', color)
+   document.body.style.backgroundColor = "#0A192F"
+    document.body.style.color = '#64FFDA'
+}else {
+  localStorage.setItem('color', 'light')
+}
+
+
+
+
+function dark(){
+   if(color === 'light'){
+    
+    localStorage.setItem('color', 'black')
+    color = localStorage.getItem("color")
+    document.body.style.backgroundColor = "#0A192F"
+    document.body.style.color =  '#64FFDA'
+   }else{
+   
+    localStorage.setItem('color', 'light')
+    color = localStorage.getItem("color")
+    document.body.style.backgroundColor = 'white'
+    document.body.style.color = 'black'
+   }
+  
+}
 
  
 
