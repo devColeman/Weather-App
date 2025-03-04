@@ -12,13 +12,18 @@ let a1 = document.querySelector('.a1')
 const image = document.getElementById('myImage');
 const lightBackground = '#F8F9FA'
 const lightFont = '#212121'
-const lightHover = '#E3F2FD'
+const lightHover = '#2196F3'
 const darkBackground = '#1A1A1A'
 const darkFont = '#E0E0E0'
 const darkHover = '#1E3A8A'
 
 // todos:
 // 🎉 feature complete🎉
+//  i dont want to deal with if there is only 2 search so lets just try hard coding in 3 recent search idk
+// we need to add a3 for colors
+// also add the light hover to the btn hover
+// figugre out the rest of the site
+// add placeholder for everything incase api is down
 // then we can move to styles and ui watch the websites playlist
 
 let test = []
@@ -304,6 +309,7 @@ async function getData() {
             
           } else{
           test.push('portland')
+        
           localStorage.setItem('key', JSON.stringify(test))
         
         }
