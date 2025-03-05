@@ -18,7 +18,7 @@
     
     <div id="search-div">  
         <div class="input-stuff">
-            <input class="realInput" placeholder="London"  type="text" id="search">   
+            <input class="realInput" placeholder="Portland, Oregon"  type="text" id="search">   
             <button id="searchBtn">Search</button>
         </div> 
         
@@ -39,51 +39,56 @@
     </div>
     <div id="main">
     <div id="left-panel">
-        <img id="myImage" src="" alt="test">
-        <p>Today</p>
-        <p class="imgHeader">Today</p>
-        <p class="currentTemp"></p>
-        <p class="location"></p>
+        <img id="myImage" src="//cdn.weatherapi.com/weather/64x64/night/116.png" alt="test">
+        <p class="today">Today</p>
+        <p class="imgHeader">Party Cloudy</p>
+        <p class="currentTemp">43°F / Feels like 43°F</p>
+        <p class="location">Portland / Oregon</p>
         
         
     </div>
     <div id="right-panel">
-        <h3>Climate Conditions</h3>
+        <h3 class="climate">Climate Conditions</h3>
       
         <div class="ul-list">
             <div class="list-div"></div>
             <ul>
-                <li><span class="humidity"></span></li>
-                <li>Dew Point: <span class="dewPoint"></span></li>
-                <li>Wind Gust:<span class="gustMph"></span></li>
-                <li>Sunrise:<span class="sunrise"></span></li>
-                <li>Sunset: <span class="sunset"></span></li>
-                <li> Moonrise:<span class="moonrise"></span></li>
+                <li><span class="humidity">Humidity: 86%</span></li>
+                <li>Dew Point:<span class="dewPoint">
+                    41.4 °F</span></li>
+                <li>Wind Gust: <span class="gustMph">
+                    3.8 mph</span></li>
+                <li>Sunrise:<span class="sunrise">
+                    5:51 PM</span></li>
+                <li>Sunset: <span class="sunset">
+                    5:29 AM</span></li>
+                <li> Moonrise:<span class="moonrise"> Warning Crest🌘</span></li>
                 <li><span class="moonPhase"></span></li>
             </ul>
         <div>
-            <h4>4 day forecast</h4>
+            <h4>4 Day Forecast</h4>
             <div class="forecastDiv">
             <div>
-                <img src="" class="first-img" alt="placeholder">
-                <p class="first-forecast">55 F</p>
-                <p class="first-max-min">55°/33°</p>
+                <img src="//cdn.weatherapi.com/weather/64x64/day/248.png" class="first-img" alt="placeholder">
+                <p class="first-forecast">Fog</p>
+                <p class="first-max-min">49°/37°</p>
 
             </div>
             <div>
-                <img src="" class="second-img" alt="placeholder">
-                <p class="second-forecast">55 F</p>
-                <p class="second-max-min">55°/33°</p>
+                <img src="//cdn.weatherapi.com/weather/64x64/day/248.png" class="second-img" alt="placeholder">
+                <p class="second-forecast">Fog</p>
+                <p class="second-max-min">48°/38°</p>
             </div>
             <div>
-                <img src="" class="third-img" alt="placeholder">
-                <p class="third-forecast">55 F</p>
-                <p class="third-max-min">55°/33°</p>
+                <img src="//cdn.weatherapi.com/weather/64x64/day/116.png"
+                class="third-img" alt="placeholder">
+                <p class="third-forecast">Partly Cloudy</p>
+                <p class="third-max-min">57°/38°</p>
             </div>
             <div>
-                <img src="" class="fourth-img" alt="placeholder">
-                <p class="fourth-forecast">55 F</p>
-                <p class="fourth-max-min">55°/33°</p>
+                <img src="//cdn.weatherapi.com/weather/64x64/day/116.png" class="fourth-img" alt="placeholder">
+                <p class="fourth-forecast">Partly Cloudy</p>
+                <p class="fourth-max-min">60°/41°</p>
             </div>
             </div>
         </div>
@@ -94,6 +99,6 @@
         
     
 
-    <script src="main.js" type="module"></script>
+    <!-- <script src="main.js" type="module"></script> -->
 </body>
 </html>

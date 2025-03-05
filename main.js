@@ -8,6 +8,7 @@ let input = document.getElementById('search')
 let btn = document.getElementById('searchBtn')
 let a0 = document.querySelector('.a0')
 let a1 = document.querySelector('.a1')
+let a2 = document.querySelector('.a2')
 // let a0 = document.querySelector('.a0')
 const image = document.getElementById('myImage');
 const lightBackground = '#F8F9FA'
@@ -37,7 +38,9 @@ if(color ==='light'){
     btn.style.outline = "1px solid black"; 
     a0.style.color = lightFont
     a1.style.color = lightFont
+    a2.style.color = lightFont
     document.documentElement.style.setProperty("--hover-color", lightHover);
+ 
     
 }else {
   localStorage.setItem('color', 'black')
@@ -45,6 +48,7 @@ if(color ==='light'){
     document.body.style.color = darkFont
     a0.style.color = darkFont
     a1.style.color = darkFont
+    a2.style.color = darkFont
     document.documentElement.style.setProperty("--hover-color", darkHover);
 }
 
@@ -61,6 +65,7 @@ function dark(){
     document.body.style.color =  darkFont
     a0.style.color = darkFont
     a1.style.color = darkFont
+    a2.style.color = darkFont
     document.documentElement.style.setProperty("--hover-color", darkHover);
    }else{
    
@@ -70,6 +75,7 @@ function dark(){
     document.body.style.color = lightFont
     a0.style.color = lightFont
     a1.style.color = lightFont
+    a2.style.color = lightFont
     document.documentElement.style.setProperty("--hover-color", lightHover);
     
    }
@@ -355,7 +361,7 @@ async function getData() {
       document.querySelector('.third-forecast').innerHTML = data3.forecast.forecastday[3].day.condition.text
       document.querySelector('.third-img').src = data3.forecast.forecastday[3].day.condition.icon
       document.querySelector('.third-max-min').innerHTML = `${Math.round(data3.forecast.forecastday[3].day.maxtemp_f)}°/${Math.round(data3.forecast.forecastday[3].day.mintemp_f)}`
-
+        console.log(data3)
       document.querySelector('.fourth-forecast').innerHTML = data3.forecast.forecastday[4].day.condition.text
       document.querySelector('.fourth-img').src = data3.forecast.forecastday[4].day.condition.icon
       document.querySelector('.fourth-max-min').innerHTML = `${Math.round(data3.forecast.forecastday[4].day.maxtemp_f)}°/${Math.round(data3.forecast.forecastday[4].day.mintemp_f)}`

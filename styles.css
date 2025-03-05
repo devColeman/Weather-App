@@ -137,8 +137,8 @@ button {
 
 button:hover {
     cursor: pointer;
-    background-color: #E3F2FD;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2)
+    background-color: var(--hover-color);
+    box-shadow: 0 0 8px rgba(255, 103, 103, 0.2);
 }
 
 
@@ -181,14 +181,6 @@ padding-top: 30px
     width: 300px;
 }
 
-#right-panel h3 {
-    display: flex;
-    justify-content: center;
-    font-size: 15px;
-}
-
-
-
 
  ul {
     display: block;
@@ -207,4 +199,119 @@ padding-top: 30px
     font-size: 10px;
  }
 
- 
+ #left-panel {
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+
+   
+ }
+
+ #myImage {
+    border-radius: 4px;
+    align-self: left;
+    padding-top: 20px;
+    padding-left: 30px;
+    width: 100px;
+
+  }
+
+  .today {
+    font-size: 20px;
+    padding-left: 30px;
+    
+  }
+
+  .imgHeader {
+    font-size: 25px;
+    font-weight: 600;
+    padding-left: 30px;
+    padding-bottom: 4px;
+  }
+
+  .currentTemp{
+    font-size: 20px;
+    padding-left: 30px;
+  }
+
+  .location {
+    padding-left: 30px;
+    font-weight: 200;
+    color: #a09daa;
+  }
+
+#right-panel {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: nowrap; */
+}
+
+.climate {
+     
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5px;
+
+}
+
+li {
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    line-height: 1.25;
+}
+
+h4 {
+margin-top: 15px;
+font-size: 25px;
+}
+
+.first-forecast {
+    font-size: 9px;
+    padding-bottom: 2px;
+    
+}
+
+.first-max-min{
+    font-size: 12px;
+}
+
+.second-forecast {
+    font-size: 9px;
+    padding-bottom: 2px;
+    
+}
+
+.second-max-min{
+    font-size: 12px;
+}
+
+.third-forecast{
+    font-size: 9px;
+    padding-bottom: 2px;
+    
+}
+
+.third-max-min{
+    font-size: 12px;
+}
+
+.fourth-forecast{
+    font-size: 9px;
+    padding-bottom: 2px;
+}
+
+.fourth-max-min{
+    font-size: 12px;
+}
+
+.forecastDiv > div > p {
+    display: flex;
+    justify-content: center;
+}
