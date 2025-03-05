@@ -138,7 +138,7 @@ button {
 button:hover {
     cursor: pointer;
     background-color: var(--hover-color);
-    box-shadow: 0 0 8px rgba(255, 103, 103, 0.2);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -170,14 +170,14 @@ padding-top: 30px
 }
 
 #left-panel {
-    border: 1px solid black;
-    height: 300px;
+    border: 2px solid black;
+    height: 290px;
     width: 300px;
 }
 
 #right-panel { 
-     border: 1px solid black;
-    height: 300px;
+     border: 2px solid black;
+     height: 290px;
     width: 300px;
 }
 
